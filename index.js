@@ -1,5 +1,4 @@
 require("dotenv").config();
-const cron = require("node-cron");
 
 const fetchLinkedInJobs = require("./linkedin");
 const fetchNaukriJobs = require("./naukri");
@@ -34,8 +33,5 @@ async function runJobTracker() {
   console.log(`✅ Added ${unique.length} jobs`);
 }
 
-// DAILY 10 AM
-cron.schedule("0 10 * * *", runJobTracker);
-
-// Manual run (first test)
+// Run once (GitHub Actions handles scheduling)
 runJobTracker();
