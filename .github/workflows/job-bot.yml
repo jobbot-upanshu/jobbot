@@ -22,6 +22,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
       # ✅ Create creds.json
       - name: Create Google credentials file
         run: |
