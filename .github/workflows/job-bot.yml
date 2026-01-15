@@ -39,10 +39,6 @@ jobs:
           OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
           GOOGLE_SHEETS_ID=${{ secrets.GOOGLE_SHEETS_ID }}
           GOOGLE_APPLICATION_CREDENTIALS=./creds.json
-          LINKEDIN_EMAIL=${{ secrets.LINKEDIN_EMAIL }}
-          LINKEDIN_PASSWORD=${{ secrets.LINKEDIN_PASSWORD }}
-          NAUKRI_EMAIL=${{ secrets.NAUKRI_EMAIL }}
-          NAUKRI_PASSWORD=${{ secrets.NAUKRI_PASSWORD }}
           EOF
 
       - name: Run job bot

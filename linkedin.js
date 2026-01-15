@@ -41,14 +41,21 @@
 const { chromium } = require("playwright");
 
 async function fetchLinkedInJobs(keywords) {
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({
+    headless: true,
+    args: ["--disable-blink-features=AutomationControlled"],
+  });
   const page = await browser.newPage();
 
   const url = `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(
     keywords
   )}&f_TPR=r86400`;
 
-  await page.goto(url, { waitUntil: "networkidle" });
+  try {
+    await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60000 });
+  } catch (e) {
+    console.log("⚠️  Page load timeout, continuing with partial load...");
+  }
   await page.waitForTimeout(4000);
 
   const jobs = await page.evaluate(() => {
