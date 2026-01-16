@@ -2,7 +2,8 @@ name: Job Bot Scheduler
 
 on:
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: "30 4 * * *" # 10:00 AM IST (04:30 UTC)
+      timezone: Asia/Kolkata
   workflow_dispatch:
 
 jobs:
